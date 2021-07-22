@@ -7,7 +7,7 @@ import java.awt.GridLayout;
 public class Menu {
     private JPanel menuPanel;
     private Menu(){
-        JPanel menu = new JPanel();
+        this.menuPanel = new JPanel();
         JPanel buttons = new JPanel();
         buttons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         buttons.setLayout(new GridLayout(2, 2));
@@ -20,9 +20,9 @@ public class Menu {
         buttons.add(update);
         buttons.add(pickList);
         buttons.add(lowStock);
-        menu.setLayout(new GridLayout(1,2));
-        menu.add(title);
-        menu.add(buttons);
+        menuPanel.setLayout(new GridLayout(2,1));
+        menuPanel.add(title);
+        menuPanel.add(buttons);
 
     }
     public static JPanel getInstance(){

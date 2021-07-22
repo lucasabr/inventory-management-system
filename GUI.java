@@ -7,6 +7,7 @@ public class GUI {
         JFrame frame = new JFrame();
         JPanel menu = Menu.getInstance();
         frame.add(menu, BorderLayout.CENTER);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
