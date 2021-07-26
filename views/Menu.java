@@ -53,18 +53,18 @@ public class Menu implements ActionListener, KeyListener{
         return buttons;
     }
 
-    private Menu(){
+    private Menu(JFrame frame){
         title = new JLabel("Inventory Management Software");
         JPanel buttons = createButtons();
         createLayout(title, buttons);
         menuPanel.addKeyListener(this);
         menuPanel.setFocusable(true);
+        this.frame = frame;
         initChildren();
     }
 
     public static JPanel getInstance(JFrame frame){
-        Menu menuInstance = new Menu();
-        menuInstance.frame = frame;
+        Menu menuInstance = new Menu(frame);
         return menuInstance.menuPanel;
     }
 
