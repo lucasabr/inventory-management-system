@@ -1,8 +1,9 @@
 package views;
 import javax.swing.*;
+import functions.Navigation;
 import java.awt.*;
 import java.awt.event.*;
-public class Menu implements ActionListener{
+public class Menu implements ActionListener, KeyListener{
     private JPanel menuPanel;
     private JButton search;
     private JButton update;
@@ -56,6 +57,8 @@ public class Menu implements ActionListener{
         title = new JLabel("Inventory Management Software");
         JPanel buttons = createButtons();
         createLayout(title, buttons);
+        menuPanel.addKeyListener(this);
+        menuPanel.setFocusable(true);
         initChildren();
     }
 
@@ -65,16 +68,22 @@ public class Menu implements ActionListener{
         return menuInstance.menuPanel;
     }
 
-    private void updateScreen(JPanel next) {
-        frame.remove(this.menuPanel);
-        frame.add(next);
-        frame.revalidate();
-        frame.repaint();
-    }
+
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==update) updateScreen(this.updatePanel);
-        else if(e.getSource()==search) updateScreen(this.searchPanel);
-        else if(e.getSource()==pickList) updateScreen(this.pickListPanel);
-        else if(e.getSource()==lowStock) updateScreen(this.lowStockPanel);
+        if(e.getSource()==update) Navigation.navigate(this.menuPanel, this.updatePanel, frame);
+        else if(e.getSource()==search) Navigation.navigate(this.menuPanel, this.searchPanel, frame);
+        else if(e.getSource()==pickList) Navigation.navigate(this.menuPanel, this.pickListPanel, frame);
+        else if(e.getSource()==lowStock) Navigation.navigate(this.menuPanel, this.lowStockPanel, frame);
     }
+
+    @Override
+    public void keyPressed(KeyEvent e){
+        if(e.getKeyCode()==KeyEvent.VK_ESCAPE) Navigation.navigate(this.menuPanel, null, frame);
+    }
+
+
+    @Override
+    public void keyReleased(KeyEvent e){}
+    @Override
+    public void keyTyped(KeyEvent e){}
 }
