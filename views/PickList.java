@@ -12,6 +12,7 @@ public class PickList implements ActionListener, KeyListener {
         pickListPanel = new JPanel();
         pickListPanel.add(text);
         pickListPanel.addKeyListener(this);
+        pickListPanel.setFocusable(true);
     }
     public static JPanel getInstance(JPanel menu, JFrame frame){
         PickList pickListInstance = new PickList();

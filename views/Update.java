@@ -14,6 +14,7 @@ public class Update implements ActionListener, KeyListener{
         updatePanel = new JPanel();
         updatePanel.add(text);
         updatePanel.addKeyListener(this);
+        updatePanel.setFocusable(true);
     }
     public static JPanel getInstance(JPanel menu, JFrame frame){
         Update updateInstance = new Update();

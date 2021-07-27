@@ -13,6 +13,7 @@ public class Search implements ActionListener, KeyListener {
         searchPanel = new JPanel();
         searchPanel.add(text);
         searchPanel.addKeyListener(this);
+        searchPanel.setFocusable(true);
     }
     public static JPanel getInstance(JPanel menu, JFrame frame){
         Search searchInstance = new Search();

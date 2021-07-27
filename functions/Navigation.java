@@ -5,8 +5,8 @@ public class Navigation {
         if(after==null) System.exit(0);
         frame.remove(before);
         frame.add(after);
-        after.setFocusable(true);
         frame.revalidate();
         frame.repaint();
+        after.requestFocus();
     }
 }

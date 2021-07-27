@@ -12,6 +12,7 @@ public class LowStock implements ActionListener, KeyListener {
         lowStockPanel = new JPanel();
         lowStockPanel.add(text);
         lowStockPanel.addKeyListener(this);
+        lowStockPanel.setFocusable(true);
     }
     public static JPanel getInstance(JPanel menu, JFrame frame){
         LowStock lowStockInstance = new LowStock();
