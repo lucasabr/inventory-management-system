@@ -4,23 +4,16 @@ import functions.Navigation;
 import java.awt.*;
 import java.awt.event.*;
 public class Menu implements ActionListener, KeyListener{
-    private JPanel menuPanel;
-    private JButton search;
-    private JButton update;
-    private JButton pickList;
-    private JButton lowStock;
+    private JButton search, update, addNew, receive;
     private JLabel title;
     private JFrame frame;
-    private JPanel searchPanel;
-    private JPanel updatePanel;
-    private JPanel pickListPanel;
-    private JPanel lowStockPanel;
+    private JPanel menuPanel, searchPanel, updatePanel, addNewPanel, receivePanel;
 
     private void initChildren(){
         searchPanel = Search.getInstance(this.menuPanel, this.frame);
         updatePanel = Update.getInstance(this.menuPanel, this.frame);
-        pickListPanel = PickList.getInstance(this.menuPanel, this.frame);
-        lowStockPanel = LowStock.getInstance(this.menuPanel, this.frame);
+        addNewPanel = AddNew.getInstance(this.menuPanel, this.frame);
+        receivePanel = Receive.getInstance(this.menuPanel, this.frame);
     }
     private void createLayout(JLabel title, JPanel buttons){
         this.menuPanel = new JPanel();
@@ -39,17 +32,17 @@ public class Menu implements ActionListener, KeyListener{
         buttons.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         buttons.setLayout(new GridLayout(2, 2));
         search = new JButton("Search Items");
-        update = new JButton("Forms");
-        pickList = new JButton("Picklist");
-        lowStock = new JButton("Low Stock Count");
+        update = new JButton("Add Sales");
+        addNew = new JButton("Add New Items");
+        receive = new JButton("Receive Orders");
         search.addActionListener(this);
         update.addActionListener(this);
-        pickList.addActionListener(this);
-        lowStock.addActionListener(this);
+        addNew.addActionListener(this);
+        receive.addActionListener(this);
         buttons.add(search);
         buttons.add(update);
-        buttons.add(pickList);
-        buttons.add(lowStock);
+        buttons.add(addNew);
+        buttons.add(receive);
         return buttons;
     }
 
@@ -72,8 +65,8 @@ public class Menu implements ActionListener, KeyListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource()==update) Navigation.navigate(this.menuPanel, this.updatePanel, frame);
         else if(e.getSource()==search) Navigation.navigate(this.menuPanel, this.searchPanel, frame);
-        else if(e.getSource()==pickList) Navigation.navigate(this.menuPanel, this.pickListPanel, frame);
-        else if(e.getSource()==lowStock) Navigation.navigate(this.menuPanel, this.lowStockPanel, frame);
+        else if(e.getSource()==addNew) Navigation.navigate(this.menuPanel, this.addNewPanel, frame);
+        else if(e.getSource()==receive) Navigation.navigate(this.menuPanel, this.receivePanel, frame);
     }
 
     @Override

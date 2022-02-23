@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import javax.swing.*;
 import views.Menu;
+import model.DBConnect;
+
 public class GUI {
     public GUI(){
         JFrame frame = new JFrame();
@@ -14,5 +16,6 @@ public class GUI {
     }
     public static void main(String[] args) {
         new GUI();
+        DBConnect.connect();
     }
 }
